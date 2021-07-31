@@ -1,3 +1,4 @@
+import { useHistory } from 'react-router-dom'
 import useInput from '../../hooks/useInput'
 import styles from './FormularioCreacion.module.css'
 
@@ -9,6 +10,7 @@ const FormularioCreacion = ({ onSubmit }: FormProps) => {
     const [name, setName, setNameValue] = useInput('')
     const [price, setPrice, setPriceValue] = useInput('0')
     const disabled = () => name === '' || price === ''
+    const history = useHistory()
 
     const validNumber = (p: string) => {
         if (p === '') return '';
@@ -24,6 +26,7 @@ const FormularioCreacion = ({ onSubmit }: FormProps) => {
         })
         setNameValue('')
         setPriceValue('0')
+        history.push('/')
     }
     return (
         <div>

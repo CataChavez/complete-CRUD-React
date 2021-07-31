@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import useInput from '../../hooks/useInput'
 import styles from './FormularioEdicion.module.css'
 
@@ -12,6 +12,7 @@ const FormularioEdicion = ({ onSubmit, product }: FormProps) => {
     const [name, setName, setNameValue] = useInput('')
     const [price, setPrice, setPriceValue] = useInput(`0`)
     const disabled = () => name === '' || price === ''
+    const history = useHistory()
 
     useEffect(() => {
         setNameValue(product.name)
@@ -33,6 +34,7 @@ const FormularioEdicion = ({ onSubmit, product }: FormProps) => {
         })
         setNameValue('')
         setPriceValue('0')
+        history.push('/')
     }
     return (
         <div>
